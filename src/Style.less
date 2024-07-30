@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
 
 :root {
-    --main-color: #9A89FF;
+    --main-color: #DEFF7F;
+    --main-dark: #272A1D;
     --success: #84F2C4;
     --error: #FF9898;
     --black: #000000;
@@ -26,6 +27,20 @@
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+  }
+
+  .icon {
+    font-family: var(--icon-font);
+  }
+
+  .trash:before {
+    content: '\e872';
+    color: inherit
+  }
+
+  .download:before {
+    content: '\f090';
+    color: inherit
   }
   
 
@@ -52,6 +67,7 @@
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
+    box-sizing: border-box;
 
     .wrapper {
       width: 100%;
@@ -109,6 +125,7 @@
         bottom: 0;
         background-color: var(--white);
         mix-blend-mode: difference;
+        z-index: 99;
 
         .cursor {
           width: 50px;
@@ -145,6 +162,52 @@
     }
   }
 
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+    width: auto;
+    height: auto;
+    background: var(--gray-800);
+    border-radius: 15px;
+    color: var(--white);
+    font-size: 36px;
+
+    .seperator {
+      width: 1px;
+      height: auto;
+      background-color: var(--gray-600);
+      align-self: stretch;
+
+    }
+
+    .tool {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--gray-700);
+      }
+
+    }
+
+    .icon {
+      font-variation-settings: 'wght' 200;
+    }
+
+    .trash:before {
+      color: var(--error)
+    }
+
+  }
+
   .home {
     width: 100%;
     height: 100%;
@@ -166,7 +229,6 @@
       max-width: 877px;
       height: auto;
       flex: none;
-      align-self: stretch;
       flex-grow: 0;
 
       .logo-and-text {
@@ -183,7 +245,7 @@
 
         .title {
           width: 100%;
-          height: a;
+          height: auto;
           .font;
           font-weight: 500;
           font-size: 65px;
@@ -209,7 +271,8 @@
     align-items: center;
     padding: 35px 20px;
     gap: 30px;
-    width: 466px;
+    width: 100%;
+    max-width: 466px;
     height: 223px;
     background: var(--gray-900);
     border: 2px dashed var(--gray-500);
@@ -261,6 +324,14 @@
 
     }
 
+    .dropzone-text {
+      display: none;
+      .font;
+      font-size: 20px;
+      text-align: center;
+      color: var(--white)
+    }
+
     .supported-files {
         width: 100%;
         height: auto;
@@ -271,3 +342,32 @@
     }
 
   }
+
+  .on-drag {
+    background-color: var(--main-dark);
+    border: 2px dashed var(--main-color);
+  }
+
+  .on-error {
+    border: 2px dashed var(--error);
+
+    .supported-files {
+      color: var(--error)
+    }
+  }
+
+  .file {
+    display: none;
+  }
+
+@media screen and (max-width: 768px)  {
+  .home {
+    .hero {
+      .logo-and-text {
+        .title {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
