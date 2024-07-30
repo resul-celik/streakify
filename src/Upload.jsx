@@ -1,10 +1,11 @@
 import { FileUploader } from "react-drag-drop-files";
-import logo from './assets/logo.png'
+import Logo from "./Components/Logo";
 import { useRef } from "react";
+import Streakifiy from "./Streakify";
+import defaultImage from './assets/default-image.jpg'
 
 
 const Upload = ({setImage,setLoading}) => {
-
 
   const handleFileChange = (e) => {
     let file = e.target.files[0];
@@ -68,18 +69,30 @@ const Upload = ({setImage,setLoading}) => {
     <div className="home">
         <div className="hero">
             <div className="logo-and-text">
-                <img src={logo} alt="" />
-                <div className="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <Logo color='DEFF7F' width={142} height={34} />
+                <div className="title">Transform your photos into vibrant streaked art.</div>
             </div>
           <div className="file-uploader" onClick={handleManualUpload} onDragOver={handleDrag} onDragLeave={handleDragEnd} onDrop={handleDrop}>
-            <div className="uploader-text">
+            <div className="uploader-text" onDrop={(e) => e.preventDefault()}>
               <input type="file" className="file" accept="image/*" onChange={handleFileChange} />
-              <div className="title">Upload your image</div>
-              <div className="supporting-text">Drag & drop here or <span style={{textDecoration: 'underline'}}>upload file</span></div>
+              <div className="title" onDrop={(e) => e.preventDefault()}>Upload your image</div>
+              <div className="supporting-text" onDrop={(e) => e.preventDefault()}>Drag & drop here or <span style={{textDecoration: 'underline'}}>upload file</span></div>
             </div>
-            <div className='supported-files'>Only JPG, PNG</div>
-            <div className="dropzone-text">Drop Here</div>
+            <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG, PNG</div>
+            <div className="dropzone-text" onDrop={(e) => e.preventDefault()}>Drop Here</div>
           </div>
+        </div>
+        <div className="demo">
+        <Streakifiy
+                image={defaultImage}
+                setLoading={setLoading}
+                loading={false}
+                maxWidth={window.innerWidth}
+                maxHeight={400}
+                toolbar={false}
+                initialWidth={200}
+                initialHeight={200}
+               />
         </div>
     </div>
   )

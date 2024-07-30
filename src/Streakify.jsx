@@ -1,18 +1,16 @@
 import { useState, useRef, useEffect } from 'react';
 import p5 from 'p5';
-import defaultImage from './assets/default-image.jpg'
 
-const Streakifiy = ({image,setLoading,loading}) => {
+
+const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initialWidth,initialHeight}) => {
 
   const canvasRef = useRef();
   const previewRef = useRef();
   const originalRef = useRef();
   const finalRef = useRef();
-  const toolbar = useRef();
-  let toolbarHeight = 0;
-  if (toolbar.current) toolbarHeight = toolbar.current.offsetHeight
-  const maxHeight = (window.innerHeight - (50 - toolbarHeight)) / 2;
-  const maxWidth = window.innerWidth - 40;
+  const line = useRef()
+  const cursorRef = useRef()
+  const canvasWrapper = useRef()
 
   function resizeImage(maxW, maxH, imgW, imgH) {
     
@@ -66,6 +64,8 @@ const Streakifiy = ({image,setLoading,loading}) => {
             }
           };
         }, canvasRef.current);
+
+        
   
         // Final image
         finalRef.current = new p5((p) => {
@@ -75,10 +75,11 @@ const Streakifiy = ({image,setLoading,loading}) => {
             img = p.loadImage(image, () => {
               let size = resizeImage(maxWidth, maxHeight, img.width, img.height);
               p.createCanvas(size.width, size.height);
-              p.image(resizedImage, 0, 0, size.width, size.height);
+              streakify(p,resizedImage,initialWidth,initialHeight)
               setLoading(false)
             });
           };
+          
         }, previewRef.current);
       }
   
@@ -122,37 +123,47 @@ const Streakifiy = ({image,setLoading,loading}) => {
     function deleteCurrent(e) {
       window.location.reload();
     }
+
+    function cursor (x,y,mouseEvents) {
+        let parentOffsetX = canvasWrapper.current.offsetLeft
+        let parentOffsetY = canvasWrapper.current.offsetTop
+        line.current.style.left = mouseEvents ? `${x - parentOffsetX}px` : `${x}px`
+        cursorRef.current.style.top = mouseEvents ? `${y - parentOffsetY}px`  : `${y}px`
+    }
     
     function streak (e) {
-  
-      let line = document.querySelector('.original').querySelector('.line')
-      let cursor = document.querySelector('.original').querySelector('.cursor')
       let mouseX = e.clientX;
       let mouseY = e.clientY;
-      let parentOffsetX = document.querySelector('.canvas-wrapper').offsetLeft
-      let parentOffsetY = document.querySelector('.canvas-wrapper').offsetTop
 
-      line.style.left = `${mouseX - parentOffsetX}px`
-      cursor.style.top = `${mouseY - parentOffsetY}px`
+      cursor(mouseX,mouseY,true)
       
     }
 
+    useEffect(() => {
+      cursor(initialWidth,initialHeight,false)
+    },[initialWidth,initialHeight])
+
     return (
       <>
-        <div className="toolbar" ref={toolbar}>
-          <div className="tool" onClick={downloadFinal}>
-            <div className="icon download"></div>
-          </div>
-          <div className="seperator"></div>
-          <div className="tool" onClick={deleteCurrent}>
-            <div className="icon trash"></div>
-          </div>
-        </div>
-        <div className="canvas-wrapper">
+        {
+          toolbar && (
+            <div className="toolbar">
+              <div className="tool" onClick={downloadFinal}>
+                <div className="icon download"></div>
+              </div>
+              <div className="seperator"></div>
+              <div className="tool" onClick={deleteCurrent}>
+                <div className="icon trash"></div>
+              </div>
+            </div>
+          )
+        }
+        
+        <div className="canvas-wrapper" ref={canvasWrapper}>
             <div className="tag">Original</div>
             <div className={`canvas original ${loading ? 'placeholder' : ''}`} onMouseMove={streak} ref={canvasRef}>
-                <div className="line">
-                    <div className="cursor"></div>
+                <div className="line" ref={line}>
+                    <div className="cursor" ref={cursorRef}></div>
                 </div>
             </div>
         </div>

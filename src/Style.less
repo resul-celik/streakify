@@ -166,26 +166,26 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 12px;
+    padding: 8px 12px;
     gap: 12px;
     width: auto;
     height: auto;
     background: var(--gray-800);
     border-radius: 15px;
     color: var(--white);
-    font-size: 36px;
+    font-size: 28px;
 
     .seperator {
       width: 1px;
       height: auto;
-      background-color: var(--gray-600);
+      background-color: var(--gray-700);
       align-self: stretch;
 
     }
 
     .tool {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -210,13 +210,13 @@
 
   .home {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 55px;
-    padding: 20px;
+    padding: 50px 20px;
     box-sizing: border-box;
 
     .hero {
@@ -258,6 +258,18 @@
         }
 
       }
+
+    }
+
+    .demo {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+      gap: 24px;
+      width: 100%;
+      height: auto;
 
     }
 
@@ -368,6 +380,9 @@
           font-size: 40px;
         }
       }
+    }
+    .demo {
+      flex-direction: column;
     }
   }
 }
