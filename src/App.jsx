@@ -21,13 +21,11 @@ function App() {
                 maxWidth={maxWidth}
                 maxHeight={maxHeight}
                 toolbar={true}
-                initialWidth={200}
-                initialHeight={200}
                />
             </div>
           </div>
         ) : (
-          <Upload setImage={setImage} setLoading={setLoading} />
+          <Upload setImage={setImage} setLoading={setLoading} loading={loading} />
         )}
     </>
   );

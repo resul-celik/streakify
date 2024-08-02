@@ -84,7 +84,10 @@
   .canvas-wrapper {
     width: auto;
     height: auto;
-    position: relative;
+    background-color: var(--gray-900);
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
 
     .tag {
       display: flex;
@@ -111,11 +114,8 @@
     .canvas {
       width: auto;
       height: auto;
-      background-color: var(--gray-900);
-      border-radius: 15px;
-      overflow: hidden;
       line-height: 0;
-      position: relative;
+      
 
       .line {
         width: 1px;
@@ -145,10 +145,11 @@
     }
 
     .placeholder {
-      width: 800px;
+      width: 100%;
       height: 475px;
       background-color: var(--gray-900);
       animation: placeholder .5s alternate infinite;
+      align-self: stretch;
     }
 
     @keyframes placeholder {
@@ -368,6 +369,21 @@
     }
   }
 
+  .button {
+    width: auto;
+    height: auto;
+    padding: 20px 40px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .font;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
   .file {
     display: none;
   }
@@ -380,9 +396,34 @@
           font-size: 40px;
         }
       }
+      .file-uploader {
+        display: none;
+      }
+
+      .button {
+        display: flex;
+      }
     }
     .demo {
       flex-direction: column;
     }
+  }
+
+  .canvas-wrapper {
+
+    .tag {
+      padding: 3px 8px;
+      left: 6px;
+      top: 6px;
+      border-radius: 4px;
+      font-size: 12px;
+
+    }
+
+    .canvas {
+      border-radius: 10px;
+
+    }
+
   }
 }

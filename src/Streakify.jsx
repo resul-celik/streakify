@@ -10,8 +10,7 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
   const finalRef = useRef();
   const line = useRef()
   const cursorRef = useRef()
-  const canvasWrapper = useRef()
-
+  const canvasWrapper = useRef();
   function resizeImage(maxW, maxH, imgW, imgH) {
     
       let ratio = 0;
@@ -39,10 +38,10 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
       if (finalRef.current) {
         finalRef.current.remove();
       }
-      
-  
+
       if (image) {
         let resizedImage;
+        let size
   
         // Original image
         originalRef.current = new p5((p) => {
@@ -50,22 +49,25 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
   
           p.setup = () => {
             img = p.loadImage(image, () => {
-              let size = resizeImage(maxWidth, maxHeight, img.width, img.height);
+              size = resizeImage(maxWidth, maxHeight, img.width, img.height);
               p.createCanvas(size.width, size.height);
               img.resize(size.width, size.height);
               resizedImage = img;
               p.image(img, 0, 0, size.width, size.height);
+              cursor(size.width / 2,size.height / 2,false)
             });
           };
   
           p.mousePressed = () => {
             if (p.mouseX >= 0 && p.mouseX <= p.width && p.mouseY >= 0 && p.mouseY <= p.height) {
-              streakify(finalRef.current, resizedImage, p.mouseX, p.mouseY);
+              streakify(finalRef.current, resizedImage, p.mouseX, p.mouseY,size);
             }
           };
         }, canvasRef.current);
 
-        
+        if (originalRef.current._setupDone) {
+          console.log('ok')
+        }
   
         // Final image
         finalRef.current = new p5((p) => {
@@ -73,9 +75,8 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
   
           p.setup = () => {
             img = p.loadImage(image, () => {
-              let size = resizeImage(maxWidth, maxHeight, img.width, img.height);
               p.createCanvas(size.width, size.height);
-              streakify(p,resizedImage,initialWidth,initialHeight)
+              streakify(p,resizedImage, size.width / 2,size.height / 2,size)
               setLoading(false)
             });
           };
@@ -98,9 +99,8 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
       finalRef.current.saveCanvas(finalRef.current.canvas, randomName, 'jpg');
     };
     
-    const streakify = (p, img, mouseX, mouseY) => {
+    const streakify = (p, img, mouseX, mouseY, size) => {
       // Resize the image to fit within the canvas
-      let size = resizeImage(maxWidth, maxHeight, img.width, img.height);
       p.image(img, 0, 0, size.width, size.height);
     
       // Loop through each row
@@ -139,9 +139,6 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
       
     }
 
-    useEffect(() => {
-      cursor(initialWidth,initialHeight,false)
-    },[initialWidth,initialHeight])
 
     return (
       <>
@@ -159,17 +156,17 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
           )
         }
         
-        <div className="canvas-wrapper" ref={canvasWrapper}>
+        <div className={`canvas-wrapper ${loading ? 'placeholder' : ''}`} ref={canvasWrapper}>
             <div className="tag">Original</div>
-            <div className={`canvas original ${loading ? 'placeholder' : ''}`} onMouseMove={streak} ref={canvasRef}>
+            <div className="canvas original" onMouseMove={streak} ref={canvasRef}>
                 <div className="line" ref={line}>
                     <div className="cursor" ref={cursorRef}></div>
                 </div>
             </div>
         </div>
-        <div className="canvas-wrapper">
+        <div className={`canvas-wrapper ${loading ? 'placeholder' : ''}`}>
             <div className="tag">Final</div>
-            <div className={`canvas final ${loading ? 'placeholder' : ''}`} ref={previewRef}></div>
+            <div className="canvas final" ref={previewRef}></div>
         </div>
       </>
     )

@@ -5,7 +5,14 @@ import Streakifiy from "./Streakify";
 import defaultImage from './assets/default-image.jpg'
 
 
-const Upload = ({setImage,setLoading}) => {
+const Upload = ({setImage,setLoading,loading}) => {
+
+  const originalCanvas = document.querySelector('.original');
+  let canvasWidth = (window.innerWidth - 64) / 2
+
+  if (window.innerWidth < 768) {
+    canvasWidth = window.innerWidth - 40
+  }
 
   const handleFileChange = (e) => {
     let file = e.target.files[0];
@@ -56,7 +63,7 @@ const Upload = ({setImage,setLoading}) => {
         document.querySelector('.supported-files').style.display = 'block'
         document.querySelector('.dropzone-text').style.display = 'none'
         document.querySelector('.supported-files').innerHTML = 'Unsupported file type. Try PNG or JPG'
-        console.log('Unsupported file type. Try PNG or JPG')
+        
       }
     }
   }
@@ -81,17 +88,16 @@ const Upload = ({setImage,setLoading}) => {
             <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG, PNG</div>
             <div className="dropzone-text" onDrop={(e) => e.preventDefault()}>Drop Here</div>
           </div>
+          <div className="button" onClick={handleManualUpload}>Upload your image</div>
         </div>
         <div className="demo">
         <Streakifiy
                 image={defaultImage}
                 setLoading={setLoading}
-                loading={false}
-                maxWidth={window.innerWidth}
+                loading={loading}
+                maxWidth={canvasWidth}
                 maxHeight={400}
                 toolbar={false}
-                initialWidth={200}
-                initialHeight={200}
                />
         </div>
     </div>
