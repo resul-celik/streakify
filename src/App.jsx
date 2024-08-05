@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './Style.css';
 import Streakifiy from './Streakify';
-import Upload from './Upload';
+import Home from './Home';
+import Page from './Components/Page';
 
 function App() {
   const [image, setImage] = useState(null);
@@ -9,8 +10,12 @@ function App() {
   const maxHeight = (window.innerHeight - (60 + 48)) / 2;
   const maxWidth = window.innerWidth - 40;
 
+  let slug = new URL(window.location).pathname.match(/[^\/]+/g)
+
   return (
     <>
+      {slug ? <Page page={slug[0]} /> : (
+        <>
         {image ? (
           <div className="streakify">
             <div className="wrapper">
@@ -25,8 +30,12 @@ function App() {
             </div>
           </div>
         ) : (
-          <Upload setImage={setImage} setLoading={setLoading} loading={loading} />
+          <Home setImage={setImage} setLoading={setLoading} loading={loading} />
         )}
+        </>
+      )}
+      
+        
     </>
   );
 }

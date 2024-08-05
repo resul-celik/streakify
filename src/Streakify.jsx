@@ -64,11 +64,7 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
             }
           };
         }, canvasRef.current);
-
-        if (originalRef.current._setupDone) {
-          console.log('ok')
-        }
-  
+        
         // Final image
         finalRef.current = new p5((p) => {
           let img;

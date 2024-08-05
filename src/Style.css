@@ -161,6 +161,12 @@
   content: '\f090';
   color: inherit;
 }
+.add-image:before {
+  content: '\e43e';
+  color: var(--gray-400);
+  font-size: 54px;
+  font-variation-settings: 'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 24;
+}
 body {
   margin: 0;
   padding: 0;
@@ -365,6 +371,16 @@ body {
   width: 100%;
   height: auto;
 }
+.home .demo .hero-image {
+  width: calc(100% - 24px);
+  max-width: 600px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.home .demo .hero-image img {
+  width: 100%;
+  height: auto;
+}
 .file-uploader {
   box-sizing: border-box;
   display: flex;
@@ -466,6 +482,70 @@ body {
 .file {
   display: none;
 }
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 55px;
+  width: 100%;
+  height: 100%;
+  background: var(--gray-900);
+  border-radius: 0px;
+  box-sizing: border-box;
+}
+.page .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 25px;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  box-sizing: border-box;
+}
+.page .content .content-title {
+  width: 100%;
+  height: auto;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  text-align: center;
+  color: var(--white);
+}
+.page .content .details {
+  width: 100%;
+  height: auto;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  color: var(--white);
+}
+.footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+.footer .footer-item {
+  color: var(--white);
+  text-decoration: none;
+  color: var(--gray-600);
+  font-weight: normal;
+  font-size: 12px;
+}
+.footer .footer-item:hover {
+  text-decoration: underline;
+}
 @media screen and (max-width: 768px) {
   .home .hero .logo-and-text .title {
     font-size: 40px;
@@ -478,6 +558,9 @@ body {
   }
   .home .demo {
     flex-direction: column;
+  }
+  .home .demo .hero-image {
+    width: 100%;
   }
   .canvas-wrapper .tag {
     padding: 3px 8px;
