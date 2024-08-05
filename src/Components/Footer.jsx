@@ -6,7 +6,7 @@ const Footer = () => {
             {
                 content.map((c,i) => {
                     return (
-                        <a href={`/${c.slug}`} className="footer-item">{c.title}</a>
+                        <a href={`/${c.slug}`} key={i} className="footer-item">{c.title}</a>
                     )
                 })
             }

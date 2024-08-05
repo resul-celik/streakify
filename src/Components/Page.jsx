@@ -9,24 +9,22 @@ const Page = ({page}) => {
             <a href="/">
                 <Logo color='DEFF7F' width={142} height={34} />
             </a>
-            <div className="content">
-                {
-                    content.map((c,i) => {
-                        return (
-                            <>
-                                {
-                                    c.slug == page && (
-                                        <>
-                                            <div className="content-title">{c.title}</div>
-                                            <div className="details">{c.content}</div>
-                                        </>
-                                    )
-                                }
-                            </>
-                        )
-                    })
-                }
-            </div>
+            {
+                content.map((c,i) => {
+                    return (
+                        <>
+                            {
+                                c.slug == page && (
+                                    <div className="content" key={i}>
+                                        <div className="content-title">{c.title}</div>
+                                        <div className="details">{c.content}</div>
+                                    </div>
+                                ) 
+                            }
+                        </>
+                    )
+                })
+            }
             <Footer />
         </div>
     )
