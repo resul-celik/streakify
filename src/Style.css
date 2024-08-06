@@ -376,6 +376,50 @@ body {
   max-width: 600px;
   overflow: hidden;
   border-radius: 20px;
+  position: relative;
+}
+.home .demo .hero-image .credit {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  z-index: 99;
+  color: var(--white);
+  opacity: 0.5;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+}
+.home .demo .hero-image .credit a {
+  color: var(--white);
+  text-decoration: underline;
+}
+.home .demo .hero-image .credit a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+.home .demo .hero-image .tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 12px;
+  gap: 10px;
+  position: absolute;
+  width: auto;
+  height: auto;
+  left: 15px;
+  top: 15px;
+  background: rgba(0, 0, 0, 0.58);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: normal;
+  z-index: 99;
 }
 .home .demo .hero-image img {
   width: 100%;
@@ -478,6 +522,7 @@ body {
   font-style: normal;
   font-size: 18px;
   font-weight: 500;
+  user-select: none;
 }
 .file {
   display: none;

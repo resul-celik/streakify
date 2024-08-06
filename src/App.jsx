@@ -3,6 +3,8 @@ import './Style.css';
 import Streakifiy from './Streakify';
 import Home from './Home';
 import Page from './Components/Page';
+import { HashRouter as Router, Routes, Route } from "react-router-dom"
+import { content } from "./Components/Content"
 
 function App() {
   const [image, setImage] = useState(null);
@@ -12,10 +14,9 @@ function App() {
 
   let slug = new URL(window.location).pathname.match(/[^\/]+/g)
 
+
   return (
     <>
-      {slug ? <Page page={slug[0]} /> : (
-        <>
         {image ? (
           <div className="streakify">
             <div className="wrapper">
@@ -26,18 +27,24 @@ function App() {
                 maxWidth={maxWidth}
                 maxHeight={maxHeight}
                 toolbar={true}
+                direction={'horizontal'}
                />
             </div>
           </div>
         ) : (
-          <Home setImage={setImage} setLoading={setLoading} loading={loading} />
+          <Router>
+            <Routes>
+              <Route path='/' element={<Home setImage={setImage} setLoading={setLoading} loading={loading} />} />
+              <Route path={`/${content[0].slug}`} element={<Page page={`${content[0].slug}`} />} />
+              <Route path={`/${content[1].slug}`} element={<Page page={`${content[1].slug}`} />} />
+              <Route path={`/${content[2].slug}`} element={<Page page={`${content[2].slug}`} />} />
+            </Routes>
+          </Router>
         )}
-        </>
-      )}
       
         
     </>
-  );
+  ); 
 }
 
 export default App;

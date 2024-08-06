@@ -288,6 +288,49 @@
         max-width: 600px;
         overflow: hidden;
         border-radius: 20px;
+        position: relative;
+
+        .credit {
+          position: absolute;
+          left: 15px;
+          bottom: 15px;
+          z-index: 99;
+          color: var(--white);
+          opacity: 0.5;
+          .font;
+          font-weight: normal;
+          font-size: 12px;
+          a {
+            color: var(--white);
+            text-decoration: underline;
+            &:hover {
+              color: var(--white);
+               text-decoration: underline;
+            }
+          }
+        }
+
+        .tag {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          padding: 5px 12px;
+          gap: 10px;
+          position: absolute;
+          width: auto;
+          height: auto;
+          left: 15px;
+          top: 15px;
+          background: rgba(0, 0, 0, 0.58);
+          border-radius: 8px;
+          color: var(--white);
+          .font;
+          font-size: 14px;
+          font-weight: normal;
+          z-index: 99;
+
+        }
 
         img {
           width: 100%;
@@ -405,6 +448,7 @@
     .font;
     font-size: 18px;
     font-weight: 500;
+    user-select: none;
   }
 
   .file {

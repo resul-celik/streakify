@@ -24,9 +24,12 @@ const Home = ({setImage,setLoading,loading}) => {
             </div>
             <div className="demo">
                 <div className="hero-image">
+                    <div className="tag">Original</div>
+                    <div className="credit">Photo by <a href="https://unsplash.com/@jennabee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Jenna Beekhuis</a> on <a href="https://unsplash.com/photos/rocks-on-sea-under-sunset-Bm0Ja6LZWl4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Unsplash</a></div>
                     <img src={originalImage} alt="" />
                 </div>
                 <div className="hero-image">
+                    <div className="tag">Final</div>
                     <img src={finalImage} alt="" />
                 </div>
             </div>

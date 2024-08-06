@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import p5 from 'p5';
 
 
-const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initialWidth,initialHeight}) => {
+const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,direction}) => {
 
   const canvasRef = useRef();
   const previewRef = useRef();
@@ -98,18 +98,32 @@ const Streakifiy = ({image,setLoading,loading,maxWidth,maxHeight,toolbar,initial
     const streakify = (p, img, mouseX, mouseY, size) => {
       // Resize the image to fit within the canvas
       p.image(img, 0, 0, size.width, size.height);
-    
       // Loop through each row
-      for (let i = 0; i < size.height; i++) {
-        // Get the color of the pixel at (mouseX, i) on the resized image
-        const c = img.get(Math.floor(mouseX * (img.width / size.width)), Math.floor(i * (img.height / size.height)));
-    
-        // Set the fill color
-        p.fill(c);
-        p.noStroke();
-    
-        // Draw a line for the entire row with the color
-        p.rect(0, i, size.width, 1);
+      
+      if (direction == 'vertical') {
+        for (let i = 0; i < size.width; i++) {
+          // Get the color of the pixel at (mouseX, i) on the resized image
+          const c = img.get(Math.floor(i * (img.width / size.width)), Math.floor(mouseX * (img.height / size.height)));
+        
+          // Set the fill color
+          p.fill(c);
+          p.noStroke();
+      
+          // Draw a line for the entire row with the color
+          p.rect(i, 0, 1, size.height);
+        }
+      } else {
+        for (let i = 0; i < size.height; i++) {
+          // Get the color of the pixel at (mouseX, i) on the resized image
+          const c = img.get(Math.floor(mouseX * (img.width / size.width)), Math.floor(i * (img.height / size.height)));
+        
+          // Set the fill color
+          p.fill(c);
+          p.noStroke();
+      
+          // Draw a line for the entire row with the color
+          p.rect(0, i, size.width, 1);
+        }
       }
     
       // Redraw the canvas

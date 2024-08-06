@@ -67,7 +67,7 @@ const Upload = ({setImage,setLoading,loading}) => {
             <div className="title" onDrop={(e) => e.preventDefault()}>Upload your image</div>
             <div className="supporting-text" onDrop={(e) => e.preventDefault()}>Drag & drop here or <span style={{textDecoration: 'underline'}}>upload file</span></div>
           </div>
-          <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG, PNG</div>
+          <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG or PNG</div>
           <div className="dropzone-text" onDrop={(e) => e.preventDefault()}>Drop Here</div>
         </div>
         <div className="button" onClick={handleManualUpload}>Upload your image</div>
