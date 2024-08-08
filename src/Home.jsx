@@ -29,7 +29,7 @@ const Home = ({setImage,setLoading,loading}) => {
                     <img src={originalImage} alt="" />
                 </div>
                 <div className="hero-image">
-                    <div className="tag">Final</div>
+                    <div className="tag">Streakified</div>
                     <img src={finalImage} alt="" />
                 </div>
             </div>

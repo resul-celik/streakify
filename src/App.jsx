@@ -27,7 +27,7 @@ function App() {
                 maxWidth={maxWidth}
                 maxHeight={maxHeight}
                 toolbar={true}
-                direction={'horizontal'}
+                direction={'vertical'}
                />
             </div>
           </div>

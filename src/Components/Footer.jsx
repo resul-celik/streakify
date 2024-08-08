@@ -11,6 +11,7 @@ const Footer = () => {
                     )
                 })
             }
+            <a href="https://github.com/resul-celik/streakify" target="_blank" className="footer-item">Github</a>
         </div>
     )
 }
