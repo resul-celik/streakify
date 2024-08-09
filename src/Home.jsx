@@ -1,13 +1,13 @@
 import Footer from "./Components/Footer";
 import Logo from "./Components/Logo";
-import Streakifiy from "./Streakify";
 import Upload from "./Upload";
-import originalImage from './assets/original.png'
-import finalImage from './assets/final.png'
+import { randomImages } from "./Components/RandomImages";
 
 const Home = ({setImage,setLoading,loading}) => {
 
     let canvasWidth = (window.innerWidth - 64) / 2
+    let rand = Math.floor(Math.random() * randomImages.length)
+
 
     if (window.innerWidth < 768) {
     canvasWidth = window.innerWidth - 40
@@ -25,12 +25,12 @@ const Home = ({setImage,setLoading,loading}) => {
             <div className="demo">
                 <div className="hero-image">
                     <div className="tag">Original</div>
-                    <div className="credit">Photo by <a href="https://unsplash.com/@jennabee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Jenna Beekhuis</a> on <a href="https://unsplash.com/photos/rocks-on-sea-under-sunset-Bm0Ja6LZWl4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" target="_blank">Unsplash</a></div>
-                    <img src={originalImage} alt="" />
+                    <div className="credit">Photo by <a href={randomImages[rand].authorLink} target="_blank">{randomImages[rand].author}</a> on <a href={randomImages[rand].publisherLink} target="_blank">{randomImages[rand].publisher}</a></div>
+                    <img src={randomImages[rand].original} alt="" loading="lazy" />
                 </div>
                 <div className="hero-image">
                     <div className="tag">Streakified</div>
-                    <img src={finalImage} alt="" />
+                    <img src={randomImages[rand].streakified} alt="" loading="lazy" />
                 </div>
             </div>
             <Footer />

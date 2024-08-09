@@ -409,6 +409,7 @@ body {
   overflow: hidden;
   border-radius: 20px;
   position: relative;
+  line-height: 0;
 }
 .home .demo .hero-image .credit {
   position: absolute;
@@ -422,14 +423,18 @@ body {
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
+  line-height: 14px;
+  text-shadow: 0px 1px 4px #000000;
 }
 .home .demo .hero-image .credit a {
   color: var(--white);
   text-decoration: underline;
+  line-height: 14px;
 }
 .home .demo .hero-image .credit a:hover {
   color: var(--white);
   text-decoration: underline;
+  line-height: 14px;
 }
 .home .demo .hero-image .tag {
   display: flex;
@@ -452,6 +457,7 @@ body {
   font-size: 14px;
   font-weight: normal;
   z-index: 99;
+  line-height: 18px;
 }
 .home .demo .hero-image img {
   width: 100%;
@@ -489,6 +495,7 @@ body {
   flex: none;
   align-self: stretch;
   flex-grow: 0;
+  pointer-events: none;
 }
 .file-uploader .uploader-text .title {
   width: 100%;
@@ -500,6 +507,7 @@ body {
   flex: none;
   align-self: stretch;
   flex-grow: 0;
+  pointer-events: none;
 }
 .file-uploader .uploader-text .supporting-text {
   width: 100%;
@@ -511,6 +519,7 @@ body {
   flex: none;
   align-self: stretch;
   flex-grow: 0;
+  pointer-events: none;
 }
 .file-uploader .dropzone-text {
   display: none;
@@ -520,6 +529,7 @@ body {
   font-size: 20px;
   text-align: center;
   color: var(--white);
+  pointer-events: none;
 }
 .file-uploader .supported-files {
   width: 100%;
@@ -528,6 +538,7 @@ body {
   font-size: 14px;
   text-align: center;
   color: var(--gray-600);
+  pointer-events: none;
 }
 .on-drag {
   background-color: var(--main-dark);
