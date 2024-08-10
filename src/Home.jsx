@@ -1,16 +1,14 @@
 import Footer from "./Components/Footer";
 import Logo from "./Components/Logo";
-import Upload from "./Upload";
 import { randomImages } from "./Components/RandomImages";
 
-const Home = ({setImage,setLoading,loading}) => {
+const Home = ({uploadForm}) => {
 
     let canvasWidth = (window.innerWidth - 64) / 2
-    let rand = Math.floor(Math.random() * randomImages.length)
-
+    let rand = Math.floor(Math.random() * randomImages.length);
 
     if (window.innerWidth < 768) {
-    canvasWidth = window.innerWidth - 40
+        canvasWidth = window.innerWidth - 40
     }
 
     return (
@@ -20,7 +18,7 @@ const Home = ({setImage,setLoading,loading}) => {
                     <Logo color='DEFF7F' width={142} height={34} />
                     <div className="title">Transform your photos into vibrant streaked art.</div>
                 </div>
-                <Upload setImage={setImage} setLoading={setLoading} loading={loading} />
+                {uploadForm}
             </div>
             <div className="demo">
                 <div className="hero-image">

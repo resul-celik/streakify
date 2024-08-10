@@ -1,8 +1,10 @@
-const Upload = ({setImage,setLoading,loading}) => {
+const Upload = ({setImage}) => {
 
   const handleFileChange = (e) => {
     let file = e.target.files[0];
     if (file) {
+
+      
       
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -12,6 +14,8 @@ const Upload = ({setImage,setLoading,loading}) => {
       reader.readAsDataURL(file);
     }
   };
+
+
 
   const handleDrag = (e) => {
     e.preventDefault()
@@ -40,6 +44,7 @@ const Upload = ({setImage,setLoading,loading}) => {
         reader.onloadend = () => {
           
           setImage(reader.result);
+          
         };
         reader.readAsDataURL(file);
       } else {
@@ -57,6 +62,7 @@ const Upload = ({setImage,setLoading,loading}) => {
   const handleManualUpload = () => {
     document.querySelector('.file').click();
   }
+
 
   return (
       <>
