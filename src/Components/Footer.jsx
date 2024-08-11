@@ -3,7 +3,7 @@ import { content } from "./Content"
 
 const Footer = () => {
     return (
-        <div className="footer">
+        <nav className="footer">
             {
                 content.map((c,i) => {
                     return (
@@ -12,7 +12,7 @@ const Footer = () => {
                 })
             }
             <a href="https://github.com/resul-celik/streakify" target="_blank" className="footer-item">Github</a>
-        </div>
+        </nav>
     )
 }
 

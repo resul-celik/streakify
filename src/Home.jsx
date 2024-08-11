@@ -12,11 +12,11 @@ const Home = ({uploadForm}) => {
     }
 
     return (
-        <div className="home">
+        <section className="home">
             <div className="hero">
                 <div className="logo-and-text">
                     <Logo color='DEFF7F' width={142} height={34} />
-                    <div className="title">Transform your photos into vibrant streaked art.</div>
+                    <h1 className="title">Transform your photos into vibrant streaked art.</h1>
                 </div>
                 {uploadForm}
             </div>
@@ -24,15 +24,15 @@ const Home = ({uploadForm}) => {
                 <div className="hero-image">
                     <div className="tag">Original</div>
                     <div className="credit">Photo by <a href={randomImages[rand].authorLink} target="_blank">{randomImages[rand].author}</a> on <a href={randomImages[rand].publisherLink} target="_blank">{randomImages[rand].publisher}</a></div>
-                    <img src={randomImages[rand].original} alt="" loading="lazy" />
+                    <img src={randomImages[rand].original} alt={randomImages[rand].alt} loading="lazy" />
                 </div>
                 <div className="hero-image">
                     <div className="tag">Streakified</div>
-                    <img src={randomImages[rand].streakified} alt="" loading="lazy" />
+                    <img src={randomImages[rand].streakified} alt={randomImages[rand].streakedAlt} loading="lazy" />
                 </div>
             </div>
             <Footer />
-        </div>
+        </section>
     )
 }
 

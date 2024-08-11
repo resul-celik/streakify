@@ -1,8 +1,17 @@
+import { useEffect } from "react"
 import { content } from "./Content"
 import Footer from "./Footer"
 import Logo from "./Logo"
 
 const Page = ({page}) => {
+
+    useEffect(() => {
+        content.map((c,i) => {
+            if (c.slug == page) {
+                document.title = `${c.title} - Streakify.art`;
+            }
+        })
+    }, [page]);
 
     return (
         <div className="page">
@@ -15,10 +24,10 @@ const Page = ({page}) => {
                         <>
                             {
                                 c.slug == page && (
-                                    <div className="content" key={i}>
-                                        <div className="content-title">{c.title}</div>
-                                        <div className="details">{c.content}</div>
-                                    </div>
+                                    <article className="content" key={i}>
+                                        <h1 className="content-title">{c.title}</h1>
+                                        <p className="details">{c.content}</p>
+                                    </article>
                                 ) 
                             }
                         </>
