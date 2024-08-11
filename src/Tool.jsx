@@ -140,7 +140,7 @@ const Tool = ({image,toolbar}) => {
     <>
       {
         toolbar && (
-          <Toolbar setDirection={setDirection} direction={direction} />
+          <Toolbar setDirection={setDirection} direction={direction} final={finalRef} />
         )
       }
       

@@ -1,12 +1,12 @@
 import { horizontal, vertical,horizontalRight,horizontalLeft,verticalUp,verticalDown } from './Icons';
 
-const Toolbar = ({setDirection, direction}) => {
+const Toolbar = ({setDirection, direction, final}) => {
 
     /* Download File */
     
     const downloadFinal = () => {
         const randomName = 'streakify_' + Math.floor(Math.random() * 9999);
-        finalRef.current.saveCanvas(finalRef.current.canvas, randomName, 'jpg');
+        final.current.saveCanvas(final.current.canvas, randomName, 'jpg');
     };
 
     /* Delete */
