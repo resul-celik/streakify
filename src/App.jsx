@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Style.css';
-import Streakifiy from './Streakify';
+import Tool from './Tool';
 import Home from './Home';
 import Page from './Components/Page';
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
@@ -43,7 +43,7 @@ function App() {
       {image ? (
         <div className="streakify">
           <div className="wrapper">
-            <Streakifiy image={image} toolbar={true} />
+            <Tool image={image} toolbar={true} />
           </div>
         </div>
       ) : (
