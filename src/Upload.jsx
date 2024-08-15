@@ -3,9 +3,6 @@ const Upload = ({setImage}) => {
   const handleFileChange = (e) => {
     let file = e.target.files[0];
     if (file) {
-
-      
-      
       const reader = new FileReader();
       reader.onloadend = () => {
         
@@ -33,6 +30,18 @@ const Upload = ({setImage}) => {
     document.querySelector('.supported-files').style.display = 'block'
     document.querySelector('.dropzone-text').style.display = 'none'
   }
+
+  /* document.onpaste = (e) => {
+    const dT = e.clipboardData || window.clipboardData;
+    const file = dT.files[0];
+    if(file) {
+      const reader = new FileReader();
+        reader.onloadend = () => {
+          setImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+    }
+  } */
 
   const handleDrop = (e) => {
     e.preventDefault()
