@@ -222,18 +222,32 @@ p {
   width: 50px;
   height: auto;
   background-color: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   mix-blend-mode: difference;
   position: absolute;
   top: 50%;
   left: calc(50% - 25px);
 }
-.canvas-wrapper .canvas .line .cursor .dashed {
+.canvas-wrapper .canvas .line .cursor .dashes {
   width: 20px;
-  height: 1px;
+  height: 0px;
   border-bottom: 1px dashed var(--white);
+  position: absolute;
+}
+.canvas-wrapper .canvas .line .cursor .d-r {
+  right: 0;
+  bottom: 0;
+}
+.canvas-wrapper .canvas .line .cursor .d-l {
+  left: 0;
+  bottom: 0;
+}
+.canvas-wrapper .canvas .line .cursor .d-d {
+  bottom: 0;
+  left: 0;
+}
+.canvas-wrapper .canvas .line .cursor .d-u {
+  top: 0;
+  left: 0;
 }
 .canvas-wrapper .canvas .line-horizontal {
   width: 100%;
@@ -244,12 +258,15 @@ p {
   right: 0;
 }
 .canvas-wrapper .canvas .line-horizontal .cursor {
-  width: 1px;
+  width: auto;
   height: 50px;
-  border-bottom: none;
-  border-right: 1px dashed var(--white);
   top: calc(50% - 25px);
   left: 50%;
+}
+.canvas-wrapper .canvas .line-horizontal .cursor .dashes {
+  width: 0px;
+  height: 20px;
+  border-right: 1px dashed var(--white);
 }
 .canvas-wrapper .original {
   cursor: none;

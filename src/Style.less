@@ -177,18 +177,33 @@
           width: 50px;
           height: auto;
           background-color: transparent;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
           mix-blend-mode: difference;
           position: absolute;
           top: 50%;
           left: ~'calc(50% - 25px)';
           
-          .dashed {
+          .dashes {
             width: 20px;
-            height: 1px;
+            height: 0px;
             border-bottom: 1px dashed var(--white);
+            position: absolute;
+          }
+
+          .d-r {
+            right: 0;
+            bottom: 0;
+          }
+          .d-l {
+            left: 0;
+            bottom: 0;
+          }
+          .d-d {
+            bottom: 0;
+            left: 0;
+          }
+          .d-u {
+            top: 0;
+            left: 0;
           }
         }
       }
@@ -203,12 +218,16 @@
         
 
         .cursor {
-          width: 1px;
+          width: auto;
           height: 50px;
-          border-bottom: none;
-          border-right: 1px dashed var(--white);
           top: ~'calc(50% - 25px)';
-          left: 50%
+          left: 50%;
+
+          .dashes {
+            width: 0px;
+            height: 20px;
+            border-right: 1px dashed var(--white);
+          }
         }
       }
     }
