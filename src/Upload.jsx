@@ -31,7 +31,7 @@ const Upload = ({setImage}) => {
     document.querySelector('.dropzone-text').style.display = 'none'
   }
 
-  /* document.onpaste = (e) => {
+   /*document.onpaste = (e) => {
     const dT = e.clipboardData || window.clipboardData;
     const file = dT.files[0];
     if(file) {
