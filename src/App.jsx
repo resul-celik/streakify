@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import './Style.css';
 import Tool from './Tool';
-import Canvas from './Canvas';
 import Home from './Home';
 import Page from './Components/Page';
 import { HashRouter as Router, Routes, Route } from "react-router-dom"
@@ -22,8 +21,16 @@ function App() {
     y: 0
   })
 
-  const maxHeight = (window.innerHeight - (60 + 48)) / 2;
-  const maxWidth = window.innerWidth - 40;
+  let maxHeight = (window.innerHeight - 72) / 2;
+  let maxWidth = window.innerWidth - 76;
+  
+  if (window.innerWidth < 768) {
+    
+    maxHeight = (window.innerHeight - (62 + 91)) / 2;
+    maxWidth = window.innerWidth - 20;
+  }
+
+  console.log(maxWidth)
 
   function loadImage (raw) {
     return new Promise((resolve,reject) => {

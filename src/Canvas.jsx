@@ -105,19 +105,23 @@ const Canvas = ({image,toolbar,direction,setDirection,cursor,setCursor,loading,s
     <>
       {
         toolbar && (
-          <Toolbar setDirection={setDirection} direction={direction} mobile={false} iconSize={28} />
+          <div className="toolbar-wrapper">
+            <Toolbar setDirection={setDirection} direction={direction} mobile={false} iconSize={28} />
+          </div>
         )
       }
       
-      <div className={`canvas-wrapper original placeholder`} ref={canvasWrapper} style={{width:image.resized.width, height: image.resized.height}}>
-          <div className="tag">Original</div>
-          <div className="canvas original" onMouseMove={streak} ref={canvasRef}>
-              <Cursor line={line} cursor={cursorRef} direction={direction} />
-          </div>
-      </div>
-      <div className={`canvas-wrapper streakified placeholder`} style={{width:image.resized.width, height: image.resized.height}}>
-          <div className="tag">Streakified</div>
-          <div className="canvas final" ref={previewRef}></div>
+      <div className="canvases">
+        <div className={`canvas-wrapper original placeholder`} ref={canvasWrapper} style={{width:image.resized.width, height: image.resized.height}}>
+            <div className="tag">Original</div>
+            <div className="canvas original" onMouseMove={streak} ref={canvasRef}>
+                <Cursor line={line} cursor={cursorRef} direction={direction} />
+            </div>
+        </div>
+        <div className={`canvas-wrapper streakified placeholder`} style={{width:image.resized.width, height: image.resized.height}}>
+            <div className="tag">Streakified</div>
+            <div className="canvas final" ref={previewRef}></div>
+        </div>
       </div>
       
     </>
