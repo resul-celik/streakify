@@ -1,3 +1,5 @@
+import Button from "./Components/Buttons";
+
 const Upload = ({setImage}) => {
 
   const handleFileChange = (e) => {
@@ -31,7 +33,7 @@ const Upload = ({setImage}) => {
     document.querySelector('.dropzone-text').style.display = 'none'
   }
 
-   /*document.onpaste = (e) => {
+  /* document.onpaste = (e) => {
     const dT = e.clipboardData || window.clipboardData;
     const file = dT.files[0];
     if(file) {
@@ -85,7 +87,13 @@ const Upload = ({setImage}) => {
           <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG or PNG</div>
           <div className="dropzone-text" onDrop={(e) => e.preventDefault()}>Drop Here</div>
         </div>
-        <div className="button" onClick={handleManualUpload}>Upload your image</div>
+        <Button 
+          text='Upload your image'
+          size='XL'
+          hierarchy='PRI'
+          onClick={handleManualUpload}
+          className='mobile-only'
+        />
       </>
   )
 

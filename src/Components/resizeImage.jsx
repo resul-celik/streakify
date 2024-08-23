@@ -1,4 +1,4 @@
-function resizeImage(maxW, maxH, imgW, imgH) {
+function fitToScreen(maxW, maxH, imgW, imgH) {
     
   let ratio = 0;
   let newWidth = 0;
@@ -17,4 +17,17 @@ function resizeImage(maxW, maxH, imgW, imgH) {
   return { width: newWidth, height: newHeight };
 }
 
-  export {resizeImage}
+function resizeImage(resolution, imgW, imgH) {
+    
+  let ratio = 0;
+  let newWidth = 0;
+  let newHeight = 0;
+
+  ratio = resolution / imgW;
+  newWidth = resolution;
+  newHeight = imgH * ratio;
+
+  return { width: newWidth, height: newHeight };
+}
+
+  export {fitToScreen,resizeImage}
