@@ -8,8 +8,8 @@ import neon from '../assets/photo-original-03.png'
 import streakifiedHorizontalNeon from '../assets/streakified-image-03-h.png'
 import streakifiedVerticalNeon from '../assets/streakified-image-03-v.png'
 
-import tree from '../assets/photo-original-04.png'
-import streakifiedVerticalTree from '../assets/streakified-image-04-v.png'
+import tree from '../assets/photo-original-04.webp'
+import streakifiedVerticalTree from '../assets/streakified-image-04-v.webp'
 
 import photo5 from '../assets/photo-original-05.png'
 import streakifiedHorizontal5 from '../assets/streakified-image-05-h.png'
@@ -21,8 +21,8 @@ import streakifiedVerticalFlower from '../assets/streakified-image-06-v.png'
 import houses from '../assets/photo-original-07.png'
 import streakifiedVerticalHouses from '../assets/streakified-image-07-vd.png'
 
-import man from '../assets/s-1.jpg'
-import streakifiedMan from '../assets/streakify-r-4235.png'
+import man from '../assets/s-1.webp'
+import streakifiedMan from '../assets/streakify-r-4235.webp'
 
 const randomImages = [
     {

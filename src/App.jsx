@@ -7,7 +7,6 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom"
 import { content } from "./Components/Content"
 import { fitToScreen, resizeImage } from './Components/resizeImage';
 import Upload from './Upload';
-import ComponentTest from './ComponentTest';
 import { ContextProvider } from './Components/ContextProvider';
 
 
@@ -77,7 +76,6 @@ function App() {
             <Route path={`/${content[0].slug}`} element={<Page page={`${content[0].slug}`} />} />
             <Route path={`/${content[1].slug}`} element={<Page page={`${content[1].slug}`} />} />
             <Route path={`/${content[2].slug}`} element={<Page page={`${content[2].slug}`} />} />
-            <Route path={`/test`} element={<ComponentTest />} />
           </Routes>
         </Router>
       )}
