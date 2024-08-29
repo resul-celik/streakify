@@ -1,15 +1,15 @@
-function fitToScreen(maxW, maxH, imgW, imgH) {
+function fitToScreen(maxW, maxH, width, height) {
     
   let ratio = 0;
   let newWidth = 0;
   let newHeight = 0;
-  ratio = maxH / imgH;
-  newWidth = imgW * ratio;
+  ratio = maxH / height;
+  newWidth = width * ratio;
 
   if (newWidth > maxW) {
-    ratio = maxW / imgW;
+    ratio = maxW / width;
     newWidth = maxW;
-    newHeight = imgH * ratio;
+    newHeight = height * ratio;
   } else {
     newHeight = maxH;
   }
@@ -17,15 +17,21 @@ function fitToScreen(maxW, maxH, imgW, imgH) {
   return { width: newWidth, height: newHeight };
 }
 
-function resizeImage(resolution, imgW, imgH) {
+function resizeImage(resolution, width, height) {
     
   let ratio = 0;
   let newWidth = 0;
   let newHeight = 0;
 
-  ratio = resolution / imgW;
-  newWidth = resolution;
-  newHeight = imgH * ratio;
+  if (width > height || width == height) {
+    ratio = resolution / height;
+    newWidth = width * ratio;
+    newHeight = resolution;
+  } else {
+    ratio = resolution / width;
+    newWidth = resolution;
+    newHeight = height * ratio;
+  }
 
   return { width: newWidth, height: newHeight };
 }

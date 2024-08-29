@@ -13,7 +13,6 @@ import { ContextProvider } from './Components/ContextProvider';
 function App() {
   const [image, setImage] = useState(null);
   const [rawImage, setRawImage] = useState(null);
-  
 
   let maxHeight = (window.innerHeight - 82) / 2;
   let maxWidth = window.innerWidth - 76;

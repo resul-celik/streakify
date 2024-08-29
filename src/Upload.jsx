@@ -31,7 +31,7 @@ const Upload = ({setImage}) => {
     document.querySelector('.supporting-text').style.display = 'block'
   }
 
-  /* document.onpaste = (e) => {
+   document.onpaste = (e) => {
     const dT = e.clipboardData || window.clipboardData;
     const file = dT.files[0];
     if(file) {
@@ -41,7 +41,7 @@ const Upload = ({setImage}) => {
         };
         reader.readAsDataURL(file);
     }
-  } */
+  } 
 
   const handleDrop = (e) => {
     e.preventDefault()

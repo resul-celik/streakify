@@ -20,7 +20,7 @@ const Tool = ({image}) => {
     /* Download File */
 
     function downloadFinal() {
-        download(image,downloadRef,setDownloading,direction,position)
+        download(image,downloadRef,setDownloading,direction,position,option)
     }
 
     /* Delete */
@@ -42,7 +42,6 @@ const Tool = ({image}) => {
         let wrapper = document.querySelector('.option-wrapper')
 
         if (wrapper) {
-            console.log('asd')
             if (wrapper.getAttribute('data-active')  == 'false') {
                 wrapper.classList.add('option-wrapper--active')
                 wrapper.setAttribute('data-active', 'true')
@@ -53,49 +52,48 @@ const Tool = ({image}) => {
         }
     }
 
-    /**
-     {
+    function headerRight() {
+        return (
+            <>
+                {
                     window.outerWidth < 768 ? (
                         <Dropdown text={ops[option]} size='LG' onClick={openMobileOptions}/>
                     ) : (
                         <Dropdown text={ops[option]} size='LG' content={dropdownContent}/>
                     )
                 }
-     */
-
-    function headerRight() {
-        return (
-            <>
                 <Button text='Download' size='LG' hierarchy='PRI' onClick={downloadFinal} />
             </>
         )
     }
 
     return (
-        <div className="streakify">
-            <div className="option-wrapper" data-active='false'>
-                 <Options options={ops} setOption={setOption} selected={option} />
-                <div className="darkness" onClick={openMobileOptions}></div>
+        <>
+            <div className="streakify">
+                <div className="option-wrapper" data-active='false'>
+                    <Options options={ops} setOption={setOption} selected={option} />
+                    <div className="darkness" onClick={openMobileOptions}></div>
+                </div>
+                <Header leftCol={headerLeft} rightCol={headerRight} />
+                <div className="wrapper">
+                    <Canvas 
+                        image={image}
+                        toolbar={window.outerWidth < 768 ? false : true}
+                    />
+                </div>
+                {window.outerWidth < 768 ? (
+                    <div className="mobile-toolbar-wrapper">
+                    <Toolbar mobile={true} iconSize={32}/>
+                </div>
+                ): (
+                    <></>
+                )}
+                
+                <div className={`message${downloading ? ' message-active' : ''}`}>Downloading...</div>
+                
             </div>
-            <Header leftCol={headerLeft} rightCol={headerRight} />
-            <div className="wrapper">
-                <Canvas 
-                    image={image}
-                    toolbar={window.outerWidth < 768 ? false : true}
-                />
-            </div>
-            {window.outerWidth < 768 ? (
-                <div className="mobile-toolbar-wrapper">
-                <Toolbar mobile={true} iconSize={32}/>
-            </div>
-            ): (
-                <></>
-            )}
-            
-            <div className={`message${downloading ? ' message-active' : ''}`}>Downloading...</div>
             <div className="download-final" ref={downloadRef}></div>
-        </div>
-        
+        </>
     )
 }
 

@@ -2,8 +2,6 @@ const streakify = (p, img, mouseX, mouseY, size, direction) => {
       
     p.image(img, 0, 0, size.width, size.height);
 
-    console.log(direction)
-
     if (direction == 'v' || direction == 'u' || direction == 'd') {
       for (let i = 0; i < size.width; i++) {
         // Get the color of the pixel at (mouseX, i) on the resized image
@@ -41,7 +39,7 @@ const streakify = (p, img, mouseX, mouseY, size, direction) => {
 
     //p.filter(p.BLUR,1)
   
-    p.redraw();
+    p.redraw(); 
   };
 
   export {streakify}
