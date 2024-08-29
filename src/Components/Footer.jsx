@@ -1,17 +1,12 @@
-import { content } from "./Content"
-
-
-const Footer = () => {
+const Footer = ({leftCol,rightCol}) => {
     return (
         <nav className="footer">
-            {
-                content.map((c,i) => {
-                    return (
-                        <a href={`/#/${c.slug}`} key={i} className="footer-item">{c.title}</a>
-                    )
-                })
-            }
-            <a href="https://github.com/resul-celik/streakify" target="_blank" className="footer-item">Github</a>
+            <div className="footer-left">
+                {leftCol()}
+            </div>
+            <div className="footer-right">
+                {rightCol()}
+            </div>
         </nav>
     )
 }

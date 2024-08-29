@@ -2,6 +2,8 @@ import { useEffect } from "react"
 import { content } from "./Content"
 import Footer from "./Footer"
 import Logo from "./Logo"
+import Header from "./Header"
+import { headerMenu, footerMenu } from "./Menus"
 
 const Page = ({page}) => {
 
@@ -13,11 +15,21 @@ const Page = ({page}) => {
         })
     }, [page]);
 
-    return (
-        <div className="page">
+    const headerLeft = () => {
+        return (
             <a href="/">
                 <Logo color='DEFF7F' width={142} height={34} />
             </a>
+        )
+    }
+
+    const footerLeft = () => {
+        return <Logo color='5F6469' width={109} height={25} />
+    }
+
+    return (
+        <div className="page">
+            <Header leftCol={headerLeft} rightCol={headerMenu} />
             {
                 content.map((c,i) => {
                     return (
@@ -34,7 +46,7 @@ const Page = ({page}) => {
                     )
                 })
             }
-            <Footer />
+            <Footer leftCol={footerLeft} rightCol={footerMenu} />
         </div>
     )
 }

@@ -1,4 +1,8 @@
-const Cursor = ({line,cursor, direction}) => {
+import { useContext } from "react"
+import { Context } from "./ContextProvider"
+
+const Cursor = ({line, cursor}) => {
+  const { direction, setDirection } = useContext(Context);
 
     return (
         <>

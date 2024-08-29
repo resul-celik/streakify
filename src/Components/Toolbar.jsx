@@ -1,6 +1,10 @@
 import { horizontal, vertical,horizontalRight,horizontalLeft,verticalUp,verticalDown } from './Icons';
+import { useContext } from 'react';
+import { Context } from './ContextProvider';
 
-const Toolbar = ({setDirection, direction, mobile, iconSize}) => {
+const Toolbar = ({mobile, iconSize}) => {
+
+  const { direction, setDirection } = useContext(Context);
 
     return (
         <div className={`toolbar ${mobile ? 'mobile-toolbar' : ''}`}>

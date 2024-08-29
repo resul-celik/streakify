@@ -3,12 +3,10 @@ import Dropdown from "./Dropdown"
 import Options from "../Options"
 import { useState } from "react"
 
-const Header = ({leftCol, rightCol}) => {
-
-    
+const Header = ({leftCol, rightCol, className}) => {
 
     return (
-        <div className="header">
+        <div className={`header ${className ? className : ''}`}>
             <div className="header-left">
                 {leftCol()}
             </div>

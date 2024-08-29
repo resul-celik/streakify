@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, createContext } from 'react';
 import './Style.css';
 import Tool from './Tool';
 import Home from './Home';
@@ -8,20 +8,15 @@ import { content } from "./Components/Content"
 import { fitToScreen, resizeImage } from './Components/resizeImage';
 import Upload from './Upload';
 import ComponentTest from './ComponentTest';
-import Header from './Components/Header';
+import { ContextProvider } from './Components/ContextProvider';
+
 
 function App() {
   const [image, setImage] = useState(null);
   const [rawImage, setRawImage] = useState(null);
-  const [direction,setDirection] = useState('h');
-  const [loading,setLoading] = useState(true);
   
-  const [cursor, setCursor] = useState({
-    x: 0,
-    y: 0
-  })
 
-  let maxHeight = (window.innerHeight - 72) / 2;
+  let maxHeight = (window.innerHeight - 82) / 2;
   let maxWidth = window.innerWidth - 76;
   
   if (window.innerWidth < 768) {
@@ -30,7 +25,6 @@ function App() {
     maxWidth = window.innerWidth - 20;
   }
 
-  console.log(maxWidth)
 
   function loadImage (raw) {
     return new Promise((resolve,reject) => {
@@ -44,20 +38,21 @@ function App() {
   }
 
   useEffect(() => {
+
     if (rawImage) {
       loadImage(rawImage).then(size => {
         let resized = fitToScreen(maxWidth,maxHeight,size.width,size.height);
         setImage({
           image: rawImage,
-          original: {
+          originalSize: {
             width: size.width,
             height: size.height
           },
-          resized: {
+          resizedSize: {
             width: resized.width,
             height: resized.height
           }
-        })
+        }) 
       }).catch(error => {
         console.error('Error loading image:', error);
       })
@@ -65,22 +60,12 @@ function App() {
 
   }, [rawImage])
 
-
   return (
     <>
       {image ? (
-          <>
-            <Tool
-                image={image}
-                toolbar={true}
-                direction={direction}
-                setDirection={setDirection}
-                cursor={cursor}
-                setCursor={setCursor}
-                loading={loading}
-                setLoading={setLoading}
-            />
-          </>
+          <ContextProvider>
+            <Tool image={image} />
+          </ContextProvider>
       ) : (
         <Router>
           <Routes>

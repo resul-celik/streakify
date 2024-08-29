@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect, useContext } from 'react';
 import Header from "./Components/Header"
 import Canvas from "./Canvas"
 import Button from "./Components/Buttons"
@@ -6,18 +6,21 @@ import Options from "./Options"
 import Dropdown from "./Components/Dropdown"
 import {download} from './Components/download'
 import { Toolbar } from "./Components/Toolbar"
+import { Context } from './Components/ContextProvider';
 
-const Tool = ({image,direction,setDirection,cursor,setCursor,loading,setLoading}) => {
+const Tool = ({image}) => {
 
     const [option, setOption] = useState('0')
     const ops = ['Original', '1080p', '720p']
     const downloadRef = useRef();
     const [downloading,setDownloading] = useState(false);
+    const {direction,setDirection} = useContext(Context);
+    const {position,setPosition} = useContext(Context);
 
     /* Download File */
 
     function downloadFinal() {
-        download(image,downloadRef,cursor,direction,setLoading,setDownloading)
+        download(image,downloadRef,setDownloading,direction,position)
     }
 
     /* Delete */
@@ -63,7 +66,6 @@ const Tool = ({image,direction,setDirection,cursor,setCursor,loading,setLoading}
     function headerRight() {
         return (
             <>
-                
                 <Button text='Download' size='LG' hierarchy='PRI' onClick={downloadFinal} />
             </>
         )
@@ -80,17 +82,11 @@ const Tool = ({image,direction,setDirection,cursor,setCursor,loading,setLoading}
                 <Canvas 
                     image={image}
                     toolbar={window.outerWidth < 768 ? false : true}
-                    direction={direction}
-                    setDirection={setDirection}
-                    cursor={cursor}
-                    setCursor={setCursor}
-                    loading={loading}
-                    setLoading={setLoading}
                 />
             </div>
             {window.outerWidth < 768 ? (
                 <div className="mobile-toolbar-wrapper">
-                <Toolbar setDirection={setDirection} direction={direction} mobile={true} iconSize={32}/>
+                <Toolbar mobile={true} iconSize={32}/>
             </div>
             ): (
                 <></>

@@ -21,16 +21,14 @@ const Upload = ({setImage}) => {
     document.querySelector('.file-uploader').classList.remove('on-error')
     document.querySelector('.file-uploader').classList.add('on-drag')
     document.querySelector('.uploader-text').style.display = 'none'
-    document.querySelector('.supported-files').style.display = 'none'
-    document.querySelector('.dropzone-text').style.display = 'block'
+    document.querySelector('.supporting-text').style.display = 'none'
   }
 
   const handleDragEnd = (e) => {
     e.preventDefault()
     document.querySelector('.file-uploader').classList.remove('on-drag')
     document.querySelector('.uploader-text').style.display = 'flex'
-    document.querySelector('.supported-files').style.display = 'block'
-    document.querySelector('.dropzone-text').style.display = 'none'
+    document.querySelector('.supporting-text').style.display = 'block'
   }
 
   /* document.onpaste = (e) => {
@@ -62,9 +60,9 @@ const Upload = ({setImage}) => {
         document.querySelector('.file-uploader').classList.remove('on-drag')
         document.querySelector('.file-uploader').classList.add('on-error')
         document.querySelector('.uploader-text').style.display = 'flex'
-        document.querySelector('.supported-files').style.display = 'block'
-        document.querySelector('.dropzone-text').style.display = 'none'
-        document.querySelector('.supported-files').innerHTML = 'Unsupported file type. Try PNG or JPG'
+        document.querySelector('.supporting-text').style.display = 'block'
+        document.querySelector('.upload-text').innerHTML = 'Unsupported file type.'
+        document.querySelector('.supporting-text').innerHTML = 'Try PNG or JPG'
         
       }
     }
@@ -78,14 +76,12 @@ const Upload = ({setImage}) => {
   return (
       <>
         <div className="file-uploader" onClick={handleManualUpload} onDragOver={handleDrag} onDragLeave={handleDragEnd} onDrop={handleDrop}>
+          <div className="icon add-image" onDrop={(e) => e.preventDefault()}></div>
           <div className="uploader-text" onDrop={(e) => e.preventDefault()}>
-            <div className="icon add-image" onDrop={(e) => e.preventDefault()}></div>
             <input type="file" className="file" accept="image/*" onChange={handleFileChange} />
-            <div className="title" onDrop={(e) => e.preventDefault()}>Upload your image</div>
+            <div className="upload-text" onDrop={(e) => e.preventDefault()}>Try it yourself</div>
             <div className="supporting-text" onDrop={(e) => e.preventDefault()}>Drag & drop here or <span style={{textDecoration: 'underline'}}>upload file</span></div>
           </div>
-          <div className='supported-files' onDrop={(e) => e.preventDefault()}>Only JPG or PNG</div>
-          <div className="dropzone-text" onDrop={(e) => e.preventDefault()}>Drop Here</div>
         </div>
         <Button 
           text='Upload your image'

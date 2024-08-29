@@ -1,6 +1,8 @@
-const streakify = (p, img, mouseX, mouseY, size,direction,setLoading) => {
+const streakify = (p, img, mouseX, mouseY, size, direction) => {
       
     p.image(img, 0, 0, size.width, size.height);
+
+    console.log(direction)
 
     if (direction == 'v' || direction == 'u' || direction == 'd') {
       for (let i = 0; i < size.width; i++) {
@@ -40,7 +42,6 @@ const streakify = (p, img, mouseX, mouseY, size,direction,setLoading) => {
     //p.filter(p.BLUR,1)
   
     p.redraw();
-    setLoading(false)
   };
 
   export {streakify}

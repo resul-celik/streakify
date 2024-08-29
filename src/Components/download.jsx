@@ -1,7 +1,7 @@
 import p5 from 'p5';
 import { streakify } from './Streakify';
 
-const download = (image, downloadRef, cursor, direction, setLoading,setDownloading) => {
+const download = (image, downloadRef, setDownloading, direction,position) => {
 
   setDownloading(true)
 
@@ -22,17 +22,16 @@ const download = (image, downloadRef, cursor, direction, setLoading,setDownloadi
           };
   
           p.setup = () => {
-            p.createCanvas(image.original.width, image.original.height);
-            p.image(img, 0, 0, image.original.width, image.original.height);
+            p.createCanvas(image.originalSize.width, image.originalSize.height);
+            p.image(img, 0, 0, image.originalSize.width, image.originalSize.height);
 
             streakify(
               p,
               img,
-              (image.original.width / 100) * ((cursor.x * 100) / image.resized.width),
-              (image.original.height / 100) * ((cursor.y * 100) / image.resized.height),
-              image.original,
-              direction,
-              setLoading
+              (image.originalSize.width / 100) * ((position.x * 100) / image.resizedSize.width),
+              (image.originalSize.height / 100) * ((position.y * 100) / image.resizedSize.height),
+              image.originalSize,
+              direction
             )
             
             resolve(downloadRef.current);  
