@@ -8,6 +8,8 @@ import { footerMenu, headerMenu } from "./Components/Menus";
 
 const Home = ({uploadForm}) => {
 
+    let images = randomImages.reverse()
+
     let gap = '48px'
 
     if (window.innerWidth < 768) gap = '10px'
@@ -34,7 +36,7 @@ const Home = ({uploadForm}) => {
             <ResponsiveMasonry columnsCountBreakPoints={{150: 1, 768: 2, 900: 3}}>
                 <Masonry gutter={gap}>
                     {
-                        randomImages.map((img,i) => {
+                        images.map((img,i) => {
                             return (
                                 <Item image={img} id={i} />
                             )

@@ -24,6 +24,21 @@ import streakifiedVerticalHouses from '../assets/streakified-image-07-vd.png'
 import man from '../assets/s-1.webp'
 import streakifiedMan from '../assets/streakify-r-4235.webp'
 
+import earthTones from '../assets/earth-tones-symphony-original.webp'
+import earthTonesStk from '../assets/earth-tones-symphony.webp'
+
+import lunarStreak from '../assets/lunar-streak-original.webp'
+import lunarStreakStk from '../assets/lunar-streak.webp'
+
+import fieryGradient from '../assets/fiery-gradient-original.webp'
+import fieryGradientStk from '../assets/fiery-gradient.webp'
+
+import frozenWaves from '../assets/frozen-waves-original.webp'
+import frozenWavesStk from '../assets/frozen-waves.webp'
+
+import tunnelOfLight from '../assets/tunnel-of-light-original.webp'
+import tunnelOfLightStk from '../assets/tunnel-of-light.webp'
+
 const randomImages = [
     {
         original: car,
@@ -121,10 +136,10 @@ const randomImages = [
             name: 'Unsplash',
             link: 'https://unsplash.com/photos/a-infrared-image-of-a-tree-in-the-middle-of-a-field-Im1Ih0IOFFM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
         },
-        title: 'Dream',
+        title: 'Vibrant Spectrum',
         alt: {
             original: 'A infrared image of a tree in the middle of a field',
-            streaked: 'A vibrant background featuring bold red, blue, and purple stripes or gradients creating a lively and colorful pattern. Multi-colored lines, vertical streaks'
+            streaked: 'A streakified image showcasing a gradient transition from deep red on the left to bright blue on the right, creating a striking spectrum effect.'
         }
     },
     {
@@ -193,6 +208,91 @@ const randomImages = [
         alt: {
             original: 'Colorful Buildings on the North Side of Nyhavn',
             streaked: 'A row of colorful buildings with distorted vertical stripes blending into the sky above. The scene includes red, yellow, green, and pastel buildings against a blue sky background.'
+        }
+    },
+    {
+        original: earthTones,
+        streakified: earthTonesStk,
+        author: {
+            name: 'Jimmy Woo',
+            link: 'https://unsplash.com/@woomantsing?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        publisher: {
+            name: 'Unsplash',
+            link: 'https://unsplash.com/photos/a-tall-building-with-many-windows-on-top-of-it-5MbZgUmzGg0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        title: 'Earth Tones Symphony',
+        alt: {
+            original: 'A tall building with many windows on top of it',
+            streaked: 'A streakified image with a palette of various earthy colors, blending together in vertical stripes ranging from greens and blues to oranges and browns.'
+        }
+    },
+    {
+        original: lunarStreak,
+        streakified: lunarStreakStk,
+        author: {
+            name: 'Neven Krcmarek',
+            link: 'https://unsplash.com/@nevenkrcmarek?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        publisher: {
+            name: 'Unsplash',
+            link: 'https://unsplash.com/photos/full-moon-9dTg44Qhx1Q?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        title: 'Lunar Streak',
+        alt: {
+            original: 'Full moon',
+            streaked: 'A streakified image of the moon, where the lower half of the moon extends into vertical grey streaks against a black background.'
+        }
+    },
+    {
+        original: fieryGradient,
+        streakified: fieryGradientStk,
+        author: {
+            name: 'Richard Wu',
+            link: 'https://www.pexels.com/photo/person-in-hat-in-fire-performance-at-night-27721821/',
+        },
+        publisher: {
+            name: 'Pexels',
+            link: 'https://www.pexels.com/photo/person-in-hat-in-fire-performance-at-night-27721821/',
+        },
+        title: 'Fiery gradient',
+        alt: {
+            original: 'Person in Hat in Fire Performance at Night',
+            streaked: 'A streakified image emphasizing a fiery gradient with intense reds, oranges, and yellows blending in vertical stripes from left to right.'
+        }
+    },
+    {
+        original: frozenWaves,
+        streakified: frozenWavesStk,
+        author: {
+            name: 'Marina Zvada',
+            link: 'https://www.pexels.com/photo/passenger-ship-near-perito-moreno-glacier-in-argentina-26842786/',
+        },
+        publisher: {
+            name: 'Pexels',
+            link: 'https://www.pexels.com/photo/passenger-ship-near-perito-moreno-glacier-in-argentina-26842786/',
+        },
+        title: 'Frozen waves',
+        alt: {
+            original: 'Passenger Ship near Perito Moreno Glacier in Argentina',
+            streaked: 'A streakified image with cool tones of blue and white, mimicking the appearance of icy waves or a glacier-like texture stretching vertically.'
+        }
+    },
+    {
+        original: tunnelOfLight,
+        streakified: tunnelOfLightStk,
+        author: {
+            name: 'Adrien Olichon',
+            link: 'https://unsplash.com/@adrienolichon?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        publisher: {
+            name: 'Unsplash',
+            link: 'https://unsplash.com/photos/a-dark-tunnel-with-red-stairs-leading-up-to-it-X4ulVYIltLk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash',
+        },
+        title: 'Tunnel of light',
+        alt: {
+            original: 'A dark tunnel with red stairs leading up to it',
+            streaked: 'A streakified image of a tunnel, where one side glows with red and orange streaks, contrasted by dark shadows on the opposite side.'
         }
     }
 ]
