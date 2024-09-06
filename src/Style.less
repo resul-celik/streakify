@@ -475,21 +475,22 @@ h1,h2,h3,h4,h5,h6,p {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px 11px;
+    padding: 3px 8px;
     gap: 10px;
     position: absolute;
     width: auto;
     height: auto;
-    left: 12px;
-    top: 12px;
+    left: 6px;
+    top: 6px;
     background: rgba(0, 0, 0, 0.58);
-    border-radius: 8px;
+    border-radius: 5px;
     color: var(--white);
     .font;
-    font-size: 14px;
+    font-size: 12px;
     z-index: 999;
     user-select: none;
     pointer-events: none;
+    letter-spacing: .2px;
 
   }
 
@@ -612,11 +613,19 @@ h1,h2,h3,h4,h5,h6,p {
   color: var(--white);
   font-size: 28px;
 
-  .seperator {
-    width: 1px;
-    height: auto;
+  .divider {
     background-color: var(--gray-700);
     align-self: stretch;
+  }
+
+  .div-v {
+    width: 1px;
+    height: auto;
+  }
+
+  .div-h {
+    width: auto;
+    height: 1px;
   }
 
   .tool {
@@ -627,6 +636,14 @@ h1,h2,h3,h4,h5,h6,p {
     align-items: center;
     border-radius: 5px;
     cursor: pointer;
+    color: var(--gray-200);
+    position: relative;
+
+    .tooltip {
+      right: -15px;
+      top: calc(50% - 13px);
+      transform: translateX(100%);
+    }
 
     .icon {
       font-size: 30px;
@@ -634,6 +651,10 @@ h1,h2,h3,h4,h5,h6,p {
 
     &:hover {
       background-color: var(--gray-700);
+      color: var(--white);
+      .tooltip {
+        display: flex;
+      }
     }
 
   }
@@ -651,6 +672,25 @@ h1,h2,h3,h4,h5,h6,p {
     color: var(--error)
   }
 
+}
+
+.tooltip {
+  width: auto;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 11px;
+  gap: 12px;
+  position: absolute;
+  background: #2F343A;
+  border-radius: 10px;
+  z-index: 3;
+  color: var(--white);
+  font-size: 12px;
+  .font;
+  pointer-events: none;
+  user-select: none;
+  text-wrap: nowrap;
 }
 
 .mobile-toolbar-wrapper {
@@ -799,8 +839,8 @@ h1,h2,h3,h4,h5,h6,p {
           position: absolute;
           width: auto;
           height: auto;
-          left: 15px;
-          top: 15px;
+          left: 9px;
+          top: 9px;
           background: rgba(0, 0, 0, 0.58);
           border-radius: 8px;
           color: var(--white);
@@ -1119,6 +1159,10 @@ h1,h2,h3,h4,h5,h6,p {
       }
     }
 
+  }
+
+  .tooltip {
+    display: none;
   }
 
   .mobile-only {

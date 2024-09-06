@@ -6,49 +6,74 @@ const Toolbar = ({mobile, iconSize}) => {
 
   const { direction, setDirection } = useContext(Context);
 
+  const ToolbarButton = ({icon}) => {
+
+    const switchCase = (param) => {
+      switch (param) {
+        case 'l': 
+          return horizontalLeft(iconSize)
+        case 'h': 
+          return horizontal(iconSize)
+        case 'r': 
+          return horizontalRight(iconSize)
+        case 'u': 
+          return verticalUp(iconSize)
+        case 'v': 
+          return vertical(iconSize)
+        case 'd': 
+          return verticalDown(iconSize)
+      
+        default:
+          return horizontal(iconSize)
+      }
+    }
+
+    const tooltipText = (param) => {
+      switch (param) {
+        case 'l': 
+          return 'Horizontal Left'
+        case 'h': 
+          return 'Horizontal'
+        case 'r': 
+          return 'Horizontal Right'
+        case 'u': 
+          return 'Vertical Up'
+        case 'v': 
+          return 'Vertical'
+        case 'd': 
+          return 'Vertical Down'
+      
+        default:
+          return 'Horizontal'
+      }
+    }
+
     return (
-        <div className={`toolbar ${mobile ? 'mobile-toolbar' : ''}`}>
-            <div 
-              className={`tool ${direction == 'l' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('l')}
-              >
-              {horizontalLeft(iconSize)}
-            </div>
-            <div 
-              className={`tool ${direction == 'h' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('h')}
-              >
-              {horizontal(iconSize)}
-            </div>
-            <div 
-              className={`tool ${direction == 'r' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('r')}
-            >
-              {horizontalRight(iconSize)}
-            </div>
-
-            <div 
-              className={`tool ${direction == 'u' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('u')}
-            >
-              {verticalUp(iconSize)}
-            </div>
-
-            <div
-              className={`tool ${direction == 'v' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('v')}
-            >
-              {vertical(iconSize)}
-            </div>
-            
-            <div 
-              className={`tool ${direction == 'd' ? 'tool--active' : ''}`}
-              onClick={e => setDirection('d')}
-            >
-              {verticalDown(iconSize)}
-            </div>
-        </div>
+      <div 
+        className={`tool ${direction == icon ? 'tool--active' : ''}`}
+        onClick={e => setDirection(icon)}
+        >
+          <div className="tooltip">{tooltipText(icon)}</div>
+        {
+          switchCase(icon)
+        }
+      </div>
     )
+  }
+
+  
+
+  return (
+      <div className={`toolbar ${mobile ? 'mobile-toolbar' : ''}`}>
+          <ToolbarButton icon='l' />
+          <ToolbarButton icon='h' />
+          <ToolbarButton icon='r' />
+          <div className={`divider ${mobile ? 'div-v' : 'div-h'}`}></div>
+          <ToolbarButton icon='u' />
+          <ToolbarButton icon='v' />
+          <ToolbarButton icon='d' />
+      </div>
+  )
 }
 
 export  {Toolbar}

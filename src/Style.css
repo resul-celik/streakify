@@ -478,23 +478,24 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px 11px;
+  padding: 3px 8px;
   gap: 10px;
   position: absolute;
   width: auto;
   height: auto;
-  left: 12px;
-  top: 12px;
+  left: 6px;
+  top: 6px;
   background: rgba(0, 0, 0, 0.58);
-  border-radius: 8px;
+  border-radius: 5px;
   color: var(--white);
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-size: 14px;
+  font-size: 12px;
   z-index: 999;
   user-select: none;
   pointer-events: none;
+  letter-spacing: 0.2px;
 }
 .canvas-wrapper .canvas {
   width: auto;
@@ -596,11 +597,17 @@ p {
   color: var(--white);
   font-size: 28px;
 }
-.toolbar .seperator {
-  width: 1px;
-  height: auto;
+.toolbar .divider {
   background-color: var(--gray-700);
   align-self: stretch;
+}
+.toolbar .div-v {
+  width: 1px;
+  height: auto;
+}
+.toolbar .div-h {
+  width: auto;
+  height: 1px;
 }
 .toolbar .tool {
   width: 32px;
@@ -610,12 +617,23 @@ p {
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
+  color: var(--gray-200);
+  position: relative;
+}
+.toolbar .tool .tooltip {
+  right: -15px;
+  top: calc(50% - 13px);
+  transform: translateX(100%);
 }
 .toolbar .tool .icon {
   font-size: 30px;
 }
 .toolbar .tool:hover {
   background-color: var(--gray-700);
+  color: var(--white);
+}
+.toolbar .tool:hover .tooltip {
+  display: flex;
 }
 .toolbar .tool--active {
   background-color: var(--gray-500);
@@ -626,6 +644,26 @@ p {
 }
 .toolbar .trash:before {
   color: var(--error);
+}
+.tooltip {
+  width: auto;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 11px;
+  gap: 12px;
+  position: absolute;
+  background: #2F343A;
+  border-radius: 10px;
+  z-index: 3;
+  color: var(--white);
+  font-size: 12px;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  pointer-events: none;
+  user-select: none;
+  text-wrap: nowrap;
 }
 .mobile-toolbar-wrapper {
   width: 100%;
@@ -759,8 +797,8 @@ p {
   position: absolute;
   width: auto;
   height: auto;
-  left: 15px;
-  top: 15px;
+  left: 9px;
+  top: 9px;
   background: rgba(0, 0, 0, 0.58);
   border-radius: 8px;
   color: var(--white);
@@ -1029,6 +1067,9 @@ p {
     font-size: 40px;
   }
   .home .hero .file-uploader {
+    display: none;
+  }
+  .tooltip {
     display: none;
   }
   .mobile-only {

@@ -7,10 +7,12 @@ const Item = ({image,id}) => {
             e.target.closest('.item').querySelector('.item-image-1').classList.remove('image-active')
             e.target.closest('.item').setAttribute('data-active', 'true')
             e.target.closest('.item').querySelector('.icon').style.transform = 'scaleX(-1)'
+            e.target.closest('.item').querySelector('.caption').innerHTML = `Photo by <a href=${image.author.link} target="_blank">${image.author.name}</a> on <a href=${image.publisher.link} target="_blank">${image.publisher.name}</a>`
         } else {
             e.target.closest('.item').querySelector('.item-image-1').classList.add('image-active')
             e.target.closest('.item').setAttribute('data-active', 'false')
             e.target.closest('.item').querySelector('.icon').style.transform = 'scaleX(1)'
+            e.target.closest('.item').querySelector('.caption').innerHTML = image.title
         }
     }
 
